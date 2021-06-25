@@ -1,0 +1,47 @@
+class Main{
+    function void main(){
+       
+    var Mat M,N,S;
+    var int i;
+    var Vec V,r;
+
+
+    let r = Vec.new(2);
+
+
+    let M = Mat.new(3,3);
+    do M.set(0,0,2);
+    do M.set(0,1,4);
+    do M.set(0,2,5);
+    do M.set(1,0,3);
+     do M.set(1,1,8);
+    do M.set(1,2,12);
+    do M.set(2,0,4);
+    do M.set(2,1,7);
+    do M.set(2,2,9);
+ 
+    /*let N = Mat.new(2,2);
+    do N.set(0,0,2);
+    do N.set(1,0,2);    
+    do N.set(0,1,2);
+    do N.set(1,1,2);
+
+    let S = M.tr();
+
+    let V = Vec.new(2);
+
+    do V.push_back(2);
+    do V.push_back(2);
+
+   //let r = M.prodVec(V);
+
+   let S = M.prodMat(N); */
+
+    let i = M.det();
+
+    
+    do Output.printInt(i);
+    return;
+
+    }
+}

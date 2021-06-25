@@ -1,0 +1,44 @@
+class Set{
+    field BST container;
+
+   constructor Set new(){
+        let container = container.new();
+        return this;
+    }
+
+    method void insert(int a){
+        do container.insert(a);        
+        return;
+    }
+    method void delete(int a){
+        do container.delete(a);
+        return;
+    }
+
+    method boolean exists(int a){
+        var int i;
+        let i = container.search(a);
+        if(i=a){
+            do Output.printString("exists");
+            return true;
+            
+        }else{
+            return false;
+            
+        }
+
+    }
+
+    method BST get_BST(){
+        return container;
+    }
+    method int size(){
+        return container.size();
+    }
+    method void clear(){
+        do container.clear();
+        return;
+    }
+
+
+}

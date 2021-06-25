@@ -1,0 +1,1026 @@
+function Mat.new 2
+push constant 3
+call Memory.alloc 1
+pop pointer 0
+push argument 0
+pop this 1
+push argument 1
+pop this 2
+push this 1
+call Array.new 1
+pop this 0
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push this 1
+lt
+not
+if-goto WHILE_END0
+push this 2
+call Array.new 1
+pop local 1
+push local 0
+push this 0
+add
+push local 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push pointer 0
+return
+function Mat.set 1
+push argument 0
+pop pointer 0
+push argument 1
+push this 0
+add
+pop pointer 1
+push that 0
+pop local 0
+push argument 2
+push local 0
+add
+push argument 3
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 0
+return
+function Mat.get 2
+push argument 0
+pop pointer 0
+push argument 1
+push this 0
+add
+pop pointer 1
+push that 0
+pop local 0
+push argument 2
+push local 0
+add
+pop pointer 1
+push that 0
+pop local 1
+push local 1
+return
+function Mat.cont 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function Mat.rem 0
+push argument 0
+pop pointer 0
+push this 1
+return
+function Mat.ren 0
+push argument 0
+pop pointer 0
+push this 2
+return
+function Mat.add 12
+push argument 0
+pop pointer 0
+push this 1
+push this 2
+call Mat.new 2
+pop local 11
+push argument 1
+call Mat.cont 1
+pop local 6
+push argument 1
+call Mat.rem 1
+pop local 0
+push argument 1
+call Mat.ren 1
+pop local 1
+push local 0
+push this 1
+eq
+push local 1
+push this 2
+eq
+and
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+pop local 2
+push constant 0
+pop local 3
+label WHILE_EXP0
+push local 2
+push this 1
+lt
+not
+if-goto WHILE_END0
+push local 2
+push this 0
+add
+pop pointer 1
+push that 0
+pop local 8
+push local 2
+push local 6
+add
+pop pointer 1
+push that 0
+pop local 9
+push constant 0
+pop local 3
+label WHILE_EXP1
+push local 3
+push this 2
+lt
+not
+if-goto WHILE_END1
+push local 3
+push local 8
+add
+pop pointer 1
+push that 0
+push local 3
+push local 9
+add
+pop pointer 1
+push that 0
+add
+pop local 4
+push local 11
+push local 2
+push local 3
+push local 4
+call Mat.set 4
+pop temp 0
+push local 3
+push constant 1
+add
+pop local 3
+goto WHILE_EXP1
+label WHILE_END1
+push local 2
+push constant 1
+add
+pop local 2
+goto WHILE_EXP0
+label WHILE_END0
+goto IF_END0
+label IF_FALSE0
+push constant 27
+call String.new 1
+push constant 114
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 122
+call String.appendChar 2
+push constant 108
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 99
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 100
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 109
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 122
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 106
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 109
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 99
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+label IF_END0
+push local 11
+return
+function Mat.sub 12
+push argument 0
+pop pointer 0
+push this 1
+push this 2
+call Mat.new 2
+pop local 11
+push argument 1
+call Mat.cont 1
+pop local 6
+push argument 1
+call Mat.rem 1
+pop local 0
+push argument 1
+call Mat.ren 1
+pop local 1
+push local 0
+push this 1
+eq
+push local 1
+push this 2
+eq
+and
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+pop local 2
+push constant 0
+pop local 3
+label WHILE_EXP0
+push local 2
+push this 1
+lt
+not
+if-goto WHILE_END0
+push local 2
+push this 0
+add
+pop pointer 1
+push that 0
+pop local 8
+push local 2
+push local 6
+add
+pop pointer 1
+push that 0
+pop local 9
+push constant 0
+pop local 3
+label WHILE_EXP1
+push local 3
+push this 2
+lt
+not
+if-goto WHILE_END1
+push local 3
+push local 8
+add
+pop pointer 1
+push that 0
+push local 3
+push local 9
+add
+pop pointer 1
+push that 0
+sub
+pop local 4
+push local 11
+push local 2
+push local 3
+push local 4
+call Mat.set 4
+pop temp 0
+push local 3
+push constant 1
+add
+pop local 3
+goto WHILE_EXP1
+label WHILE_END1
+push local 2
+push constant 1
+add
+pop local 2
+goto WHILE_EXP0
+label WHILE_END0
+goto IF_END0
+label IF_FALSE0
+push constant 27
+call String.new 1
+push constant 114
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 122
+call String.appendChar 2
+push constant 108
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 99
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 100
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 109
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 110
+call String.appendChar 2
+push constant 122
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 106
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 109
+call String.appendChar 2
+push constant 97
+call String.appendChar 2
+push constant 116
+call String.appendChar 2
+push constant 114
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 99
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+label IF_END0
+push local 11
+return
+function Mat.trace 4
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+push constant 0
+pop local 1
+label WHILE_EXP0
+push local 0
+push this 1
+lt
+not
+if-goto WHILE_END0
+push constant 0
+pop local 1
+push local 0
+push this 0
+add
+pop pointer 1
+push that 0
+pop local 3
+label WHILE_EXP1
+push local 1
+push this 2
+lt
+not
+if-goto WHILE_END1
+push local 0
+push local 1
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 2
+push local 1
+push local 3
+add
+pop pointer 1
+push that 0
+add
+pop local 2
+label IF_FALSE0
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE_EXP1
+label WHILE_END1
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push local 2
+return
+function Mat.tr 5
+push argument 0
+pop pointer 0
+push this 2
+push this 1
+call Mat.new 2
+pop local 3
+push constant 0
+pop local 0
+push constant 0
+pop local 1
+label WHILE_EXP0
+push local 0
+push this 1
+lt
+not
+if-goto WHILE_END0
+push constant 0
+pop local 1
+label WHILE_EXP1
+push local 1
+push this 2
+lt
+not
+if-goto WHILE_END1
+push local 1
+push this 0
+add
+pop pointer 1
+push that 0
+pop local 4
+push local 0
+push local 4
+add
+pop pointer 1
+push that 0
+pop local 2
+push local 3
+push local 0
+push local 1
+push local 2
+call Mat.set 4
+pop temp 0
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE_EXP1
+label WHILE_END1
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push local 3
+return
+function Mat.prodVec 6
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+push constant 0
+pop local 1
+push argument 1
+call Vec.cont 1
+pop local 5
+push this 2
+call Vec.new 1
+pop local 3
+push argument 1
+call Vec.dimension 1
+pop local 2
+push local 2
+push this 2
+eq
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 11
+call String.new 1
+push constant 110
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 106
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 109
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 103
+call String.appendChar 2
+push constant 117
+call String.appendChar 2
+push constant 99
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push local 3
+return
+label IF_FALSE0
+label WHILE_EXP0
+push local 0
+push this 1
+lt
+not
+if-goto WHILE_END0
+push local 0
+push this 0
+add
+pop pointer 1
+push that 0
+pop local 4
+push constant 0
+pop local 1
+push constant 0
+pop local 2
+label WHILE_EXP1
+push local 1
+push this 2
+lt
+not
+if-goto WHILE_END1
+push local 2
+push local 1
+push local 4
+add
+pop pointer 1
+push that 0
+add
+push local 1
+push local 5
+add
+pop pointer 1
+push that 0
+call Math.multiply 2
+pop local 2
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE_EXP1
+label WHILE_END1
+push local 3
+push local 2
+call Vec.push_back 2
+pop temp 0
+push constant 1
+call String.new 1
+push constant 32
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push local 3
+return
+function Mat.prodMat 9
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+push constant 0
+pop local 1
+push constant 0
+pop local 3
+push argument 1
+call Mat.rem 1
+pop local 2
+push this 1
+push this 2
+call Mat.new 2
+pop local 5
+push argument 1
+call Mat.cont 1
+pop local 7
+push this 2
+push local 2
+eq
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 11
+call String.new 1
+push constant 110
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 106
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 109
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 103
+call String.appendChar 2
+push constant 117
+call String.appendChar 2
+push constant 99
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push local 5
+return
+label IF_FALSE0
+label WHILE_EXP0
+push local 0
+push this 2
+lt
+not
+if-goto WHILE_END0
+push constant 0
+pop local 1
+push constant 0
+pop local 4
+label WHILE_EXP1
+push local 1
+push local 2
+lt
+not
+if-goto WHILE_END1
+push constant 0
+pop local 3
+push local 0
+push this 0
+add
+pop pointer 1
+push that 0
+pop local 6
+push constant 0
+pop local 3
+push constant 0
+pop local 4
+label WHILE_EXP2
+push local 3
+push this 1
+lt
+not
+if-goto WHILE_END2
+push local 3
+push local 7
+add
+pop pointer 1
+push that 0
+pop local 8
+push local 4
+push local 3
+push local 6
+add
+pop pointer 1
+push that 0
+push local 1
+push local 8
+add
+pop pointer 1
+push that 0
+call Math.multiply 2
+add
+pop local 4
+push local 3
+push constant 1
+add
+pop local 3
+goto WHILE_EXP2
+label WHILE_END2
+push local 5
+push local 0
+push local 1
+push local 4
+call Mat.set 4
+pop temp 0
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE_EXP1
+label WHILE_END1
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push local 5
+return
+function Mat.det 7
+push argument 0
+pop pointer 0
+push this 1
+push this 2
+eq
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 11
+call String.new 1
+push constant 110
+call String.appendChar 2
+push constant 105
+call String.appendChar 2
+push constant 106
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+push constant 109
+call String.appendChar 2
+push constant 111
+call String.appendChar 2
+push constant 103
+call String.appendChar 2
+push constant 117
+call String.appendChar 2
+push constant 99
+call String.appendChar 2
+push constant 101
+call String.appendChar 2
+call Output.printString 1
+pop temp 0
+push constant 1
+neg
+return
+label IF_FALSE0
+push this 1
+pop local 1
+push this 2
+pop local 2
+push this 1
+push this 2
+call Mat.new 2
+pop local 5
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push this 2
+lt
+not
+if-goto WHILE_END0
+push constant 0
+pop local 3
+push local 0
+push this 0
+add
+pop pointer 1
+push that 0
+pop local 6
+label WHILE_EXP1
+push local 3
+push this 1
+lt
+not
+if-goto WHILE_END1
+push local 3
+push local 6
+add
+pop pointer 1
+push that 0
+pop local 4
+push local 5
+push local 0
+push local 3
+push local 4
+call Mat.set 4
+pop temp 0
+push local 3
+push constant 1
+add
+pop local 3
+goto WHILE_EXP1
+label WHILE_END1
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push local 5
+push this 1
+call Mat.det_pom 2
+pop local 0
+push local 1
+pop this 1
+push local 2
+pop this 2
+push local 0
+return
+function Mat.det_pom 11
+push constant 0
+pop local 6
+push argument 1
+push constant 1
+sub
+push argument 1
+push constant 1
+sub
+call Mat.new 2
+pop local 10
+push argument 1
+push constant 2
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push argument 0
+push constant 1
+push constant 1
+call Mat.get 3
+pop local 3
+push argument 0
+push constant 0
+push constant 0
+call Mat.get 3
+pop local 0
+push argument 0
+push constant 0
+push constant 1
+call Mat.get 3
+pop local 1
+push argument 0
+push constant 1
+push constant 0
+call Mat.get 3
+pop local 2
+push local 0
+push local 3
+call Math.multiply 2
+push local 1
+push local 2
+call Math.multiply 2
+sub
+pop local 6
+push local 6
+return
+goto IF_END0
+label IF_FALSE0
+push constant 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push argument 1
+lt
+not
+if-goto WHILE_END0
+push constant 0
+pop local 8
+push constant 1
+pop local 4
+label WHILE_EXP1
+push local 4
+push argument 1
+lt
+not
+if-goto WHILE_END1
+push constant 0
+pop local 9
+push constant 0
+pop local 5
+label WHILE_EXP2
+push local 5
+push argument 1
+lt
+not
+if-goto WHILE_END2
+push local 5
+push local 0
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 5
+push constant 1
+add
+pop local 5
+goto IF_END1
+label IF_FALSE1
+push argument 0
+push local 4
+push local 5
+call Mat.get 3
+pop local 3
+push local 10
+push local 8
+push local 9
+push local 3
+call Mat.set 4
+pop temp 0
+push local 5
+push constant 1
+add
+pop local 5
+push local 9
+push constant 1
+add
+pop local 9
+label IF_END1
+goto WHILE_EXP2
+label WHILE_END2
+push local 4
+push constant 1
+add
+pop local 4
+push local 8
+push constant 1
+add
+pop local 8
+goto WHILE_EXP1
+label WHILE_END1
+push argument 0
+push constant 0
+push local 0
+call Mat.get 3
+pop local 3
+push local 10
+push argument 1
+push constant 1
+sub
+call Mat.det_pom 2
+pop local 2
+push local 0
+call Mat.parnost 1
+pop local 1
+push local 6
+push local 1
+push local 3
+call Math.multiply 2
+push local 2
+call Math.multiply 2
+add
+pop local 6
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+label IF_END0
+push local 6
+return
+function Mat.parnost 1
+push argument 0
+push constant 2
+call Math.divide 2
+pop local 0
+push local 0
+push constant 2
+call Math.multiply 2
+pop local 0
+push argument 0
+push local 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 1
+return
+goto IF_END0
+label IF_FALSE0
+push constant 1
+neg
+return
+label IF_END0

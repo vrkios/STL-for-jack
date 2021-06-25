@@ -1,0 +1,78 @@
+class Vector{
+    
+    field int size,capacity;
+    field Array container;
+   
+    
+
+    constructor Vector new(){
+        let size = 0;
+        let capacity = 1;
+        let container = Array.new(1);
+        return this;
+    }
+    
+
+    method void resize(){
+        var int i,j;
+        var Array T;
+            let i = size;
+            let j = 0;
+            let capacity = capacity * 2;
+            let T = Array.new(capacity);
+            while(j<i){
+                let T[j]=container[j];
+               do Output.printInt(container[j]);
+                
+                let j = j+1;
+            }
+            
+            let container = T;
+           
+    
+        
+        
+        
+        return;
+    }
+    method int get(int pos){
+        if(pos>(size+1)){return (-1);}
+        
+        return container[pos];
+    }
+    method void set(int pos,int value){
+        if(pos+1<size){
+            let container[pos] = value;
+        }
+        return;
+    }
+    method void push_back(int value){
+        if(capacity = size){
+        do resize();
+        }
+        let container[size] = value;
+        let size = size + 1;
+        return;
+    }
+    method void print(){
+        var int i;
+        let i = 0;
+        while(i<capacity){
+            do Output.printInt(container[i]);
+            let i = i+1;
+            do Output.printString(" ");
+        }
+        return;
+    }
+    method void clear(){
+        do container.dispose();
+        let capacity = 1;
+        let size = 0;
+        let container = Array.new(1);
+        return;
+    }
+    method int size(){
+        return size;
+    }
+    
+}

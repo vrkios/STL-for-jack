@@ -1,0 +1,83 @@
+class Stack{
+    field int size,capacity;
+    field Array container;
+
+    constructor Stack new(){
+        let size = 0;
+        let capacity = 1;
+        let container = Array.new(1);
+        return this;
+    }
+    
+
+    method void up_size(){
+        var int i,j;
+        var Array T;
+        
+        
+        if(capacity = size){
+            
+            let i = size;
+            let j = 0;
+            let capacity = capacity * 2;
+            let T = Array.new(capacity);
+            while(j<i){
+                let T[j]=container[j];
+               //do Output.printInt(container[j]);
+                
+                let j = j+1;
+            }
+            
+            let container = T;
+        }
+        return;
+    }
+
+    method void down_size(){
+        var int i,j;
+        var Array T;
+        if(capacity = (2*size)){
+            
+            let i = size;
+            let j = 0;
+            let capacity = capacity / 2;
+            let T = Array.new(capacity);
+            while(j<i){
+                let T[j]=container[j];
+               //do Output.printInt(container[j]);
+                
+                let j = j+1;
+            }
+            
+            let container = T;
+        }
+        return;
+    }
+    
+    method void push(int value){
+        do up_size();
+        let container[size]=value;
+        let size = size+1;
+        return;
+    }
+    method void pop(){
+        do down_size();
+        let size = size - 1;
+        return;
+    }
+    method int peek(){
+        
+        return container[(size-1)];
+    }
+    method void clear(){
+        let size = 0;
+        let capacity = 1;
+        do container.dispose();
+        let container = Array.new(1);
+        return;
+    }
+    method int size(){
+        return size;
+    }
+    
+}

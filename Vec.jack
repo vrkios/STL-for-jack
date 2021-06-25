@@ -1,0 +1,198 @@
+class Vec{
+    field Array container;
+
+    field int dim,size;
+
+    constructor Vec new(int a){
+        
+        
+        let container = Array.new(a);
+        let dim = a;
+        let size = 0;
+        return this;       
+    }
+
+    method Array cont(){
+        return container;
+    }
+    method Array dimension(){
+        return dim;
+    }
+
+    method void push_back(int value){
+        if(dim = size){
+        return;
+        }
+        let container[size] = value;
+        let size = size + 1;
+        return;
+    }
+
+
+    method Vec add(Vec V){
+        var Array P,G;
+        var int i,a,b,c,d;
+        var Vec K;
+
+        
+        let i = V.dimension();
+        let P = V.cont();
+
+        let K = Vec.new(i);
+
+        let i = K.dimension();
+        
+        if(i=dim){
+            let c =0;
+            while(c<dim){
+                let a = container[c];
+                let b = P[c];
+                let d = a+b;
+                let G = K.cont();
+                let G[c] = d;
+                let c = c+1;
+            }
+            return K;
+        }else{
+            
+            let c = 0;
+            while(c<dim){
+                do K.push_back(0);
+                let c = c+1;
+            }
+            do Output.printString("razlicite dimenzije vektora");
+            return K;
+        }
+    }
+
+     method int get(int pos){
+        var int i;
+        let i = container[pos];
+        return i;
+    }
+     method Vec sub(Vec V){
+        var Array P;
+        var int i,a,b,c,d;
+        var Vec K;
+
+        
+        let i = V.dimension();
+        let P = V.cont();
+
+        let K = Vec.new(i);
+
+        let i = K.dimension();
+        
+        if(i=dim){
+            let c =0;
+            while(c<dim){
+                let a = container[c];
+                let b = P[c];
+                let d = a-b;
+                do K.push_back(d);
+                let c = c+1;
+            }
+            return K;
+        }else{
+            
+            let c = 0;
+            while(c<dim){
+                do K.push_back(0);
+                let c = c+1;
+            }
+            do Output.printString("razlicite dimenzije vektora");
+            return K;
+        }
+    }
+
+    method int ScalarProd(Vec V){
+        var Array A;
+        var int i,a,b,c;
+        var Vec P;
+
+        let i = V.dimension();
+        let P = Vec.new(dim);
+        let A = V.cont();
+
+
+        if(i=dim){
+            let i = 0;
+            let c = 0;
+            while(i<dim){
+                
+                let a = container[i];
+                let b = A[i];
+                let c = c + a*b;
+               
+                let i = i+1;
+            }
+            return c;
+        }else{
+            
+            
+            do Output.printString("razlicite dimenzije vektora");
+            return -1;
+        }
+
+    }
+
+    method int norm(){
+        var int i,prod,re;
+
+        let i =0;
+
+        while(i < dim){
+            let prod = container[i] * container[i];
+            let re = re + prod;
+            let i = i+1;
+        }
+
+        let re = Math.sqrt(re);
+        return re;
+
+    }
+    
+    method Vec VecProd(Vec V){
+        var int a,b,c;
+        var Vec A;
+        var Array K;
+        
+        
+        let A = Vec.new(dim);
+        
+        let K = V.cont();
+
+        if (dim=3){
+            let a = container[1] * K[2];
+            let b = container[2] * K[1];
+            let c = a -b;
+            do  A.push_back(c);
+            let a = container[2] * K[0];
+            let b = container[0] * K[2];
+            let c = a-b;
+            do A.push_back(c);
+            let a = container[0] * K[1];
+            let b = container[1] * K[0];
+            do A.push_back(c);
+            return A;
+        }else{
+            let c = 0;
+            while(c<dim){
+                do K.push_back(0);
+                let c = c+1;
+            }
+            do Output.printString("razlicite dimenzije vektora");
+            return K;
+        }
+    }
+    method int size(){
+        return size;
+    }
+    method void clear(){
+        do container.dispose();
+        let size = 0;
+        let container= Array.new(dim);
+        return;
+    }
+
+}

@@ -1,0 +1,338 @@
+class Mat{
+    field Array container;
+    field int m,n;
+
+
+    constructor Mat new(int M,int N){
+        var int i;
+        var Array A;
+
+        let m = M;
+        let n = N;
+        let container = Array.new(m);
+        let i = 0;
+        while (i<m){
+            let A = Array.new(n);
+            let container[i] = A;
+            let i = i+1;
+        }
+        return this;
+    }
+
+    method void set(int m,int n,int value){
+        var Array A;
+      
+        let A = container[m];
+        let A[n] = value;
+       
+        return;
+    }
+     method int get(int m,int n){
+        var Array A;
+        var int i;
+      
+        let A = container[m];
+        let i = A[n];
+       
+        return i ;
+    }
+
+    method Array cont(){
+        return container;
+    }
+    method Array rem(){
+        return m;
+    }
+    
+    method Array ren(){
+        return n;
+    }
+    method Mat add(Mat A){
+        var int Am,An,i,j,a,b;
+        var Array B,C,D,E,F;
+        var Mat rez;
+
+        let rez = Mat.new(m,n);
+
+        let B = A.cont();
+        let Am = A.rem();
+        let An = A.ren();
+
+        
+        if((Am=m)&(An=n)){
+            let i = 0;
+            let j = 0;
+            
+            while(i<m){
+                //do Output.printInt(i);
+                let D = container[i];
+                let E = B[i];
+                let j = 0;
+                while(j<n){
+                    let a = D[j] + E[j];
+                    do rez.set(i,j,a);
+                    let j = j+1;
+                   // do Output.printInt(a);
+                    //do Output.printString(" ");
+                }
+                let i = i+1;
+            }
+        }else{
+            do Output.printString("razlicite dimenzije matrice");
+            
+        }
+        return rez;
+    }
+    method Mat sub(Mat A){
+        var int Am,An,i,j,a,b;
+        var Array B,C,D,E,F;
+        var Mat rez;
+
+        let rez = Mat.new(m,n);
+
+        let B = A.cont();
+        let Am = A.rem();
+        let An = A.ren();
+
+        
+        if((Am=m)&(An=n)){
+            let i = 0;
+            let j = 0;
+            
+            while(i<m){
+                //do Output.printInt(i);
+                let D = container[i];
+                let E = B[i];
+                let j = 0;
+                while(j<n){
+                    let a = D[j] - E[j];
+                    do rez.set(i,j,a);
+                    let j = j+1;
+                   // do Output.printInt(a);
+                    //do Output.printString(" ");
+                }
+                let i = i+1;
+            }
+        }else{
+            do Output.printString("razlicite dimenzije matrice");
+            
+        }
+        return rez;
+    }
+    method int trace(){
+        var int i,j,sum;
+        var Array A;
+
+        
+        let i =0;
+        let j=0;
+        while(i<m){
+            let j =0;
+            let A = container[i];
+            while(j<n){
+                if(i=j){
+                    let sum = sum + A[j];
+                }
+                let j = j+1;
+            }
+
+            let i = i+1;
+        }
+        return sum;
+    }
+    method Mat tr(){
+        var int i,j,a;
+        var Mat rez;
+        var Array A;
+
+        let rez = Mat.new(n,m);
+        let i = 0;
+        let j = 0;
+        while(i<m){
+            let j = 0;
+            while(j<n){
+                let A  =container[j];
+                let a = A[i];
+                do rez.set(i,j,a);
+                let j = j+1;
+            }
+            let i = i+1;
+        }
+        return rez;
+
+    }
+
+    method Vec prodVec(Vec P){
+        var int i,j,a;
+        var Vec rez;
+        var Array A,V;
+
+         let i = 0;
+        let j = 0;
+        let V = P.cont();
+        let rez = Vec.new(n);
+        let a = P.dimension();
+        if(~(a=n)){
+            do Output.printString("nije moguce");
+            return rez;
+        }
+
+        while(i<m){
+            
+            let A  =container[i];
+            let j = 0;
+            let a = 0;
+            while(j<n){
+                
+                let a = a + A[j] * V[j];
+                
+                let j = j+1;
+            }
+            do rez.push_back(a);
+            //do Output.printInt(a);
+            do Output.printString(" ");
+            let i = i+1;
+        }
+        return rez;
+    }
+
+    method Mat prodMat(Mat A){
+        var int i,j,Am,k,sum;
+        var Mat rez;
+        var Array B,C,D;
+
+        let i =0;
+        let j = 0;
+        let k =0;
+        let Am = A.rem();
+        let rez = Mat.new(m,n);
+        let C = A.cont();
+        if(~(n=Am)){
+            do Output.printString("nije moguce");
+            return rez;
+        }
+        while(i<n){
+            let j =0;
+            let sum = 0;
+            while(j<Am){
+                let k = 0;
+                let B = container[i];
+                let k = 0;
+                let sum = 0;
+                while(k<m){
+                    let D = C[k];
+                    let sum = sum + (B[k]*D[j]);
+                    
+                    let k = k+1; 
+                }
+                do rez.set(i,j,sum);
+                let j=j+1;
+            }
+            let i = i+1;
+        }
+        return rez;                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+    }
+
+    method int det(){ 
+        var int i,a,b,j,k;
+        var Mat A;
+        var Array B;
+        if(~(m=n)){
+            do Output.printString("nije moguce");
+            return -1;
+        }
+        let a = m;
+        let b = n;
+        let A = Mat.new(m,n);
+        let i = 0;
+        while(i<n){
+            let j = 0;
+            let B = container[i];
+            while(j<m){
+                let k = B[j];
+                do A.set(i,j,k);
+                // /do Output.printInt(k);
+                let j = j+1;
+            }
+            let i = i+1;
+        }
+        let i =  Mat.det_pom(A,m);
+        
+        let m = a;
+        let n =b;
+        return i;
+    }
+    function int det_pom(Mat M,int m){
+        var int a,b,c,d,i,j,sum,p,subi,subj;
+        var Mat pom;
+        let sum = 0;
+        let pom = Mat.new(m-1,m-1);
+        //do Output.printInt(m);
+        if(m=2){
+            
+            let d = M.get(1,1);
+            let a = M.get(0,0);
+            let b = M.get(0,1);
+            let c = M.get(1,0);
+            let sum = (a*d) - (b*c);
+            //do Output.printInt(sum);
+            return sum;
+        }else{
+            let a = 0;
+            
+            
+            while(a<m){
+            
+            let subi =0;
+           let i = 1;
+           
+           while(i<m){
+               
+               let subj = 0;
+               let j = 0;
+               while(j<m){
+                   
+                   if(j=a){
+                       let j = j+1;
+                       //do Output.printInt(5);   
+                   }else{
+                       let d = M.get(i,j);
+                       do pom.set(subi,subj,d);
+                       let j = j+1;
+                       let subj= subj+1;
+                       
+                       
+                   }
+               }
+               let i = i+1;
+               let subi = subi+1;
+           }
+
+           let d = M.get(0,a);
+           let c = Mat.det_pom(pom,m-1);
+           let b = Mat.parnost(a);
+           
+           let sum = sum + (b * d * c);
+           
+           let a=a+1;
+        }
+        }
+        return sum;
+        
+        
+    }
+
+    function int parnost(int a){
+        var int i;
+        let i = a/2;
+        
+        let i = i*2;        
+        if(a=i){
+            return 1;
+        }else{
+            return -1;
+        }
+    }   
+
+
+}

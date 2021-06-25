@@ -1,0 +1,99 @@
+function Queue.new 0
+push constant 2
+call Memory.alloc 1
+pop pointer 0
+call Stack.new 0
+pop this 0
+call Stack.new 0
+pop this 1
+push pointer 0
+return
+function Queue.enqueue 2
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+push this 0
+call Stack.size 1
+pop local 1
+label WHILE_EXP0
+push local 0
+push local 1
+lt
+not
+if-goto WHILE_END0
+push this 0
+call Stack.peek 1
+pop local 0
+push this 0
+call Stack.pop 1
+pop temp 0
+push this 1
+push local 0
+call Stack.push 2
+pop temp 0
+goto WHILE_EXP0
+label WHILE_END0
+push this 0
+push argument 1
+call Stack.push 2
+pop temp 0
+push constant 0
+pop local 0
+push this 1
+call Stack.size 1
+pop local 1
+label WHILE_EXP1
+push local 0
+push local 1
+lt
+not
+if-goto WHILE_END1
+push this 1
+call Stack.peek 1
+pop local 0
+push this 1
+call Stack.pop 1
+pop temp 0
+push this 0
+push local 0
+call Stack.push 2
+pop temp 0
+goto WHILE_EXP1
+label WHILE_END1
+push constant 0
+return
+function Queue.dequeue 0
+push argument 0
+pop pointer 0
+push this 0
+call Stack.pop 1
+pop temp 0
+push constant 0
+return
+function Queue.peek 0
+push argument 0
+pop pointer 0
+push this 0
+call Stack.peek 1
+call Output.printInt 1
+pop temp 0
+push this 0
+call Stack.peek 1
+return
+function Queue.size 0
+push argument 0
+pop pointer 0
+push this 0
+call Stack.size 1
+return
+function Queue.clear 0
+push argument 0
+pop pointer 0
+push this 0
+call Stack.clear 1
+pop temp 0
+call Stack.new 0
+pop this 0
+push constant 0
+return

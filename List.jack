@@ -1,0 +1,114 @@
+class List{
+    field Node head,tail;
+    field int size;
+
+    constructor List new(){
+        let head = null;
+        let tail = null;
+        let size = 0;
+        return this;
+    }
+
+    method int get_head(){
+        var int i;
+        let i = head.get_elem();
+        return i;
+    }
+
+    
+    method int get_tail(){
+        var int i;
+        let i = tail.get_elem();
+        return i;
+    }
+
+    method void insertFront(int a){
+        var Node I;
+        if(size = 0){
+            let I = Node.new(a);
+            let head = I;
+            let tail = I;
+            let size = 1;
+            return;
+        }
+        if(size = 1){
+            let I = Node.new(a);
+            let head = I;
+            do tail.add_left(head);
+            do tail.add_right(head);
+
+            do head.add_right(tail);
+            do head.add_left(head);
+            
+            let size= size+1;
+            return;
+        }else{
+            let I = Node.new(a);
+            do I.add_right(head);
+            do head.add_left(I);
+            let head = I;
+            do head.add_left(tail);
+            let size = size + 1;
+            return;
+        }
+    }
+    method void insertBack(int a){
+        var Node I;
+        if(size = 0){
+            let I = Node.new(a);
+            let head = I;
+            let tail = I;
+            let size = 1;
+            return;
+        }
+        if(size=1){
+            let I = Node.new(a);
+            let tail = I;
+            do tail.add_left(head);
+            do tail.add_right(head);
+
+            do head.add_right(tail);
+            do head.add_right(head);
+
+            let size = size+1;
+            return;
+        }else{
+            let I = Node.new(a);
+            do I.add_left(tail);
+            do tail.add_right(I);
+            let tail = I;
+            do tail.add_right(tail);
+            do tail.add_right(head);
+            let size=size+1;
+            return;
+        }
+    }
+    method int size(){
+        return size;
+    }
+    method void clear(){
+        do List.dispose_pom(head,tail);
+        let size = 0;
+        let head = null;
+        let tail = null;
+        return;
+    }
+
+    function void dispose_pom(Node delete,Node end){
+        var int i;
+        if(delete=end){
+            //do delete.dispose();
+            return;
+        }
+        let i = delete.get_elem();
+        do Output.printInt(i);
+
+        do delete.dispose();
+        do List.dispose_pom(delete.right(),end);
+        return;
+        
+    }
+    
+
+
+}

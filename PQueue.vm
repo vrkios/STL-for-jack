@@ -1,0 +1,55 @@
+function PQueue.new 0
+push constant 1
+call Memory.alloc 1
+pop pointer 0
+push this 0
+call BST.new 1
+pop this 0
+push pointer 0
+return
+function PQueue.enqueue 0
+push argument 0
+pop pointer 0
+push this 0
+push argument 1
+call BST.insert 2
+pop temp 0
+push constant 0
+return
+function PQueue.dequeue 1
+push argument 0
+pop pointer 0
+push this 0
+call BST.max 1
+pop local 0
+push this 0
+push local 0
+call BST.delete 2
+pop temp 0
+push constant 0
+return
+function PQueue.peek 1
+push argument 0
+pop pointer 0
+push this 0
+call BST.max 1
+pop local 0
+push local 0
+call Output.printInt 1
+pop temp 0
+push local 0
+return
+function PQueue.size 0
+push argument 0
+pop pointer 0
+push this 0
+call BST.size 1
+return
+function PQueue.dispose 0
+push argument 0
+pop pointer 0
+push this 0
+call BST.clear 1
+pop temp 0
+push constant 0
+return

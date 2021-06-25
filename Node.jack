@@ -1,0 +1,43 @@
+class Node{
+    field int elem;
+    field Node left,right;
+    
+    constructor Node new(int  _elem){
+        
+        let left = null;
+        let right = null;
+        let elem = _elem;
+        return this;
+    }
+
+       
+    method void add_left(Node b){
+        let left = b;
+         return;
+    }
+    
+    method void add_right(Node b){
+        let right = b;
+        return;
+    }
+
+    method Node right(){
+        return right;
+    }
+    method Node left(){
+        return left;
+    }
+    method int get_elem(){
+        //do Output.printInt(elem);
+        return elem;
+    }
+    method void set_elem(int a){
+        let elem = a;
+        return;
+    }
+
+    method void dispose(){
+        do Memory.deAlloc(this);
+        return;
+    }
+}   

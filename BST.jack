@@ -1,0 +1,302 @@
+class BST{
+    field Node root;
+    field int size;
+
+    constructor BST new(){
+        let size = 0;
+        return this;
+    }
+
+    method int get_root(){
+        var int i;
+        let i = root.get_elem();
+        return i;
+    }
+    method Node rroot(){
+        return root;
+    }
+
+    method void insert(int a){
+        var Node T;
+        var int i;
+        
+
+        if (size = 0){
+            let size = 1;
+            let T  = Node.new(a);
+            let root = T;
+            return;
+        }
+        do BST.insert_pom(root,a);
+        let size = size +1 ;
+        return;
+    }
+
+    function void insert_pom(Node r,int a){
+        var int temp;
+        var Node T;
+        let temp = r.get_elem();
+
+        
+        if((r.left()=null)&(temp>a)){
+           let T = Node.new(a);
+           
+           do r.add_left(T);
+           return;
+        }
+        if((r.right()=null)&(temp<a)){
+           let T = Node.new(a);
+           
+           do r.add_right(T);
+           return;
+        }
+         if(a<temp){      
+                
+                do BST.insert_pom(r.left(),a);
+           }else{
+               
+               do BST.insert_pom(r.right(),a);
+           }
+        return;
+        
+    }
+
+    
+   
+     method void delete(int a){
+        var int temp;
+        var Node T,P,G,R,L;
+        
+        let temp = root.get_elem();
+        //do Output.printInt(temp);
+        //do Output.printInt(a);
+        if(~(temp=a)){
+            do BST.delete_pom(root,a);  
+        }else{
+            if((root.left()=null)&(root.right()=null)){
+                do Memory.deAlloc(this);
+                
+            }else{
+                if(root.left()=null){
+                    let T = root.right();
+                    do root.dispose();
+                    let root = T;
+
+                    
+                }else{
+                    if(root.right()=null){
+                        let T = root.left();
+                        do root.dispose();
+                        let root = T;
+                        
+                        
+                    }else{
+                         let T = root.left();
+                         if(~(T.right()=null)){
+                             let P = T;
+                             let T = T.right();
+                            while(~(T.right()=null)){
+                                let P = T;
+                                let T = T.right();
+                            }
+                            let G=T.left();
+                            if(~(G=null)){
+                                do P.add_right(G);
+                            }
+                            let G = root.right();
+                            do T.add_right(G);
+                            let G = root.left();
+                            do T.add_left(G);
+                            do root.dispose();
+                            let root = T;
+
+
+                         }else{
+                             let P = root.right();
+                             do T.add_right(P);
+                             do root.dispose();
+                             let root = T; 
+                         }
+
+                    }
+                        
+                    
+                }
+            }        
+        }
+        let size = size -1;
+        return;
+    }
+
+    function void delete_pom(Node _root,int del){
+        var int L,R,temp;
+        var Node l,r,T,G,P,delete,K;
+        
+        let l = _root.left();
+        let r= _root.right();
+        if(~(l=null)){
+            let L = l.get_elem();
+        }else{
+            let L =-1;
+        }
+        if(~(r=null)){
+            let R = r.get_elem();
+        }else{
+            let R =-1;
+        }
+        if ((L = del)|(R=del)){
+            if(L=del){
+                let T = l.left();
+                let delete = l;
+                if((delete.right()=null)&(delete.left()=null)){
+                    do _root.add_left(null);
+                    do delete.dispose();
+                    return;
+                    
+            }
+            }else{
+                let T = r.left();
+                let delete = r;  
+                if((delete.right()=null)&(delete.left()=null)){
+                    do _root.add_right(null);
+                    do delete.dispose();
+                    return; 
+                    
+            }             
+            }
+            
+            
+            if(T=null){
+                
+                let G = delete.right();
+               
+                do _root.add_right(G);
+                do Output.printInt(1);
+                return;
+                
+            }else{
+                
+                 if(~(T.right()=null)){
+                    let P = T;
+                    let T = T.right();
+                        while(~(T.right()=null)){
+                            let P = T;
+                            let T = T.right();
+                        }
+                }else{
+                    if(L=del){
+                        //do Output.printInt(1);
+                        do _root.add_left(T);
+                        let G = delete.right();
+                        do T.add_right(G);
+                        do delete.dispose();
+                        return;
+                    }else{
+                        //do Output.printInt(1);
+                        do _root.add_right(T);
+                        let G = delete.right();
+                        do T.add_right(G);
+                        do delete.dispose();
+                        return;
+                    }
+                }
+                
+                let G=T.left();
+                if(~(G=null)){
+                    do P.add_right(G);
+                }
+                
+                let G = delete.right();
+                if(~(G=null)){
+                    do T.add_right(G);
+                }
+                
+                let G = delete.left();
+                if(~(G=null)){
+                    do T.add_left(G);
+                }
+                
+                do delete.dispose();
+            }
+            return;
+        }
+        let temp  = _root.get_elem();
+        if(temp>del){
+            do BST.delete_pom(_root.left(),del);
+        }else{
+            
+            do BST.delete_pom(_root.right(),del);
+        }
+        return;       
+}
+
+    method int search(int s){
+        return BST.search_pom(root,s);
+    }
+    function int search_pom(Node _root,int s){
+        var int a;
+
+        let a = _root.get_elem();
+        
+        if(a>s){
+            if(_root.left()=null){
+                do Output.printString("nepostojeci element");
+                return -1;
+                
+            }else{
+                return BST.search_pom(_root.left(),s);
+            }
+        }else {
+            if (a<s){
+                if(_root.right()=null){
+                    do Output.printString("nepostojeci element");
+                    return -1;
+                }else{
+                    return BST.search_pom(_root.right(),s);
+                }
+            }
+            else{
+                return a;
+            }
+        }
+        
+        
+    }
+    method int size(){
+        return size;
+    }
+    method void clear(){
+        do BST.dispose_pom(root);
+        let size = 0;
+        return;
+    }
+    function void dispose_pom(Node _root){
+        if(_root.left()=null){
+            return;
+        }else{
+            do BST.dispose_pom(_root.left());
+        }
+        if(_root.right()=null){
+            return;
+        }else{
+            do BST.dispose_pom(_root.right());
+        }
+        do _root.dispose();
+        return;
+    }
+
+    method int max(){
+        var Node V;
+        var int i;
+        let V = root;
+        let i =  root.get_elem();
+        while(~(V.right()=null)){
+            let V = V.right();
+            let i =  root.get_elem();
+            
+        }
+        let i =  V.get_elem();
+        return i;
+    }
+}
+   

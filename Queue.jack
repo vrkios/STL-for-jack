@@ -1,0 +1,56 @@
+class Queue{
+    field Stack stack1,stack2;
+
+    constructor Queue new(){
+        let stack1 = Stack.new();
+        let stack2 = Stack.new();
+        return this;
+    }
+
+    method void enqueue(int value){
+        var int i,stack_size;
+        let i =0;
+        let stack_size=stack1.size();
+        while(i<stack_size){
+            let i = stack1.peek();
+            do stack1.pop();
+            do stack2.push(i);
+        }
+        do stack1.push(value);
+        
+        
+        let i =0;
+        let stack_size=stack2.size();
+        while(i<stack_size){
+            let i = stack2.peek();
+            do stack2.pop();
+            do stack1.push(i);
+        }
+        return;
+    }
+    method void dequeue(){
+        do stack1.pop();
+        return;
+        
+    }
+
+    method int peek(){
+        
+        do Output.printInt(stack1.peek());
+        return stack1.peek();
+    }
+
+    method int size(){
+        return stack1.size();
+    }
+    
+    method void clear(){
+        do stack1.clear();
+        let stack1 = Stack.new();
+        return;
+    }
+
+
+
+
+}
